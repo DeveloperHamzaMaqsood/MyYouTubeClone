@@ -1,24 +1,38 @@
-import logo from './logo.svg';
 import './App.css';
+import {useEffect} from 'react'
+import '../node_modules/bootstrap/dist/css/bootstrap.css'
+import {Switch , Route} from 'react-router-dom'
+/* import RightSideSec from './components/RightSideSec/Main'
+import VideoSingle from './components/videoPage/MainPage'
+ */
+import {useSelector} from 'react-redux'
+import {useHistory} from 'react-router-dom'
+import Login from './components/login/LoginScreen'
+import Home from './components/Home'
+import WatchLater from './components/WatchLater/MainWcth'
+import LikeVideos from './components/LikedVideos/MainLiked'
+import SingleVideo from './components/videoPage/MainPage'
 
 function App() {
+  /* const {accessToken , loading} = useSelector(state => state.auth)
+  const history = useHistory()
+  useEffect(() => {
+    if(!loading && !accessToken){
+      history.push("/log")
+    }
+  } , [accessToken, loading]) */
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Switch>
+      <Route exact path="/" component={Home} />
+      <Route  path="/log" component={Login} />
+      <Route  path="/watchLater" component={WatchLater} />
+      <Route path="/likeVideos" component={LikeVideos} />
+      <Route path="/videos/:id" component={SingleVideo} />
+    </Switch>
+    </>
   );
 }
 
